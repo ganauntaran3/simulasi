@@ -66,4 +66,44 @@ if (isset($_POST['square'])) {
     }
 }
 
+// Delete ingkaran
+
+if($_GET['resultC'] == 1) {
+
+    $json = file_get_contents('circle.json');
+    $data = json_decode($json, true);
+
+    unset($data[$_GET['id']]);
+    $final = json_encode($data,JSON_PRETTY_PRINT);
+    if (file_put_contents('circle.json',$final)) {
+        header('Location: http://localhost/simulasi/circle.php');
+    }
+
+}
+
+if($_GET['resultS'] == 1) {
+
+    $json = file_get_contents('square.json');
+    $data = json_decode($json, true);
+
+    unset($data[$_GET['id']]);
+    $final = json_encode($data,JSON_PRETTY_PRINT);
+    if (file_put_contents('square.json',$final)) {
+        header('Location: http://localhost/simulasi/square.php');
+    }
+
+}
+
+if($_GET['resultT'] == 1) {
+
+    $json = file_get_contents('triangle.json');
+    $data = json_decode($json, true);
+
+    unset($data[$_GET['id']]);
+    $final = json_encode($data,JSON_PRETTY_PRINT);
+    if (file_put_contents('triangle.json',$final)) {
+        header('Location: http://localhost/simulasi/triangle.php');
+    }
+
+}
 ?>
